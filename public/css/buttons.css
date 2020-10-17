@@ -17,6 +17,8 @@
     justify-content: center;
 
     transition: background-color .2s;
+
+    text-decoration: none;
 }
 
 .primary-button:hover {
@@ -53,5 +55,3 @@
 .button-select button:last-child {
     border-radius: 0 2rem 2rem 0;
 }
-
-
