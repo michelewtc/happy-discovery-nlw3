@@ -2,33 +2,30 @@ const Database = require('./database/db');
 const saveOrphanage = require('./database/saveOrphanage');
 
 module.exports = {
+
     index(req,res) {
+        const city = req.query.city
         return res.render('index')
     },
 
     async orphanage(req, res) {
-        const id = req.query.id;
+
+        const id = req.query.id 
 
         try {
             const db = await Database;
-            const results = await db.all(`SELECT * FROM orphanages WHERE id = "${id}"`);
-            const orphanage = results[0];
+            const results = await db.all(`SELECT * FROM orphanages WHERE  id="${id}"`)
+            const orphanage = results[0]
 
-            orphanage.images = orphanage.images.split(",");
-            orphanage.firstImage = orphanage.images[0];
-        
-            var fds = (orphanage.open_on_weekends == "0")?orphanage.open_on_weekends = false : orphanage.open_on_weekends = true;
+            orphanage.images = orphanage.images.split(",")
+            orphanage.firstImage = orphanage.images[0]
 
-            // if(orphanage.open_on_weekends == "0") {
-            //     orphanage.open_on_weekends = false
-            // } else {
-            //     orphanage.open_on_weekends = true
-            // }
+            var fds = (orphanage.open_on_weekends == "0") ? orphanage.open_on_weekends = false : orphanage.open_on_weekends = true;
 
-            return res.render('orphanage', { orphanage });
+            return res.render('orphanage', { orphanage })  
         } catch (error) {
             console.log(error);
-            return res.send('Erro no banco de dados!');
+            return res.send('Erro no banco de dados!')
         }
     },
 
@@ -50,26 +47,26 @@ module.exports = {
     async saveOrphanage(req, res) {
         const fields = req.body
 
-        //Validar se todos os campos estao preenchidos
-        if(Object.values(fields).includes('')) {
-            return res.send('Todos os campos devem ser preenchidos!')
+        //valida se todos os campos estao preenchidos 
+        if(Object.values(fields).includes('')){
+            return res.send('Todos os campos precisam ser preenchidos!')
         }
 
         try {
-            //Salvar um orfanato 
+            //salvar um orfanato
             const db = await Database
-            await saveOrphanage(db, {
+                await saveOrphanage(db, {
                 lat: fields.lat,
                 lng: fields.lng,
                 name: fields.name,
                 about: fields.about,
-                about: fields.whatsapp,
+                whatsapp: fields.whatsapp,
                 images: fields.images.toString(),
                 instructions: fields.instructions,
                 opening_hours: fields.opening_hours,
                 open_on_weekends: fields.open_on_weekends,
             })
-
+            
             //Redirecionamento 
             return res.redirect('/orphanages')
             
@@ -77,5 +74,7 @@ module.exports = {
             console.log(error)
             return res.send('Erro no banco de dados!')
         }
+
     }
+    
 }

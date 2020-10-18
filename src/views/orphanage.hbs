@@ -39,12 +39,12 @@
 
             <main class="animate-appear with-sidebar"> 
                 <div class="orphanage-details">
-                    <img src="{{orphanage.firstImage}}" alt="{{orphanage.name}}">
+                    <img src="{{orphanage.firstImage}}" alt="{{orphanage.name}}" />
 
                     <div class="images">
                         {{#each orphanage.images }}
                         <button onclick="selectImage(event)" class="active" type="button">
-                            <img src="{{this}}" alt="{{orphanage.name}}" />
+                            <img src="{{this}}" alt="{{orphanage.name}}">
                         </button>
                         {{/each}}
                     </div>
@@ -62,7 +62,7 @@
                             </footer>
                         </div>
 
-                        <hr />
+                        <hr>
 
                         <h2>Instruções para visita</h2>
 
@@ -77,14 +77,14 @@
                             {{#if orphanage.open_on_weekends}}
                             <div class="open-on-weekends open">
                                 <img src="/images/info.svg" alt="Informações">
-                                Atendemos fim de semana
-                            </div> 
+                                Atendemos fim de semana 
+                            </div>
                             {{else}}
                             <div class="open-on-weekends closed">
                                 <img src="/images/info-red.svg" alt="Informações">
                                 Não atendemos fim de semana
-                            </div> 
-                            {{/if}} 
+                            </div>
+                            {{/if}}
                         </div>
 
                         <a href="https://api.whatsapp.com/send?l=pt_BR&phone={{orphanage.whatsapp}}&text=Oi, quero conversar sobre visitas no {{orphanage.name}}" target="_blank" class="primary-button" type=button>

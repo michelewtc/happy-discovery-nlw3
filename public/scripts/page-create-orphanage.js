@@ -85,10 +85,13 @@ function toggleSelect(event) {
 }
 
 // function validate(event) {
-//     //validar se lat e lng estao preenchidos 
-//      const needsLatAndLng = true;
-//      if(needsLatAndLng) {
-//          event.preventDefault()
-//          alert('Selecione um ponto no mapa')
-//      }
+
+//     //Validar se lat e lng estao selecionados
+//     const needsLatAndLng = true;
+//     if(needsLatAndLng){
+//         //N envia formulario
+//         event.preventDefault()
+//         alert('Selecione latitude e longitude')
+//     }
+
 // }
