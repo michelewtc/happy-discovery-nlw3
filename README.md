@@ -4,4 +4,4 @@
 <br/>
 <hr/>
 <br/>
-Projeto desenvolvido na Next Level Week #3 da Rockeatseat - Trilha Discovery
+Projeto desenvolvido na Next Level Week #3 da Rocketseat - Trilha Discovery
